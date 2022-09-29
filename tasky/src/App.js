@@ -10,16 +10,17 @@ import Grid from '@mui/material/Grid';
 function App() {
   const [ taskState, setTaskState ] = useState({
     tasks: [
-      { id: 1, title: "Dishes", description: "Empty dishwasher", deadline: "Today" , done: false},
-      { id: 2, title: "Laundry", description: "Fold clothes and put away", deadline: "Tomorrow" , done: false},
-      { id: 3, title: "Tidy up", deadline: "Today" , done: false},
-      { id: 4, title: "Go shopping", description:"Buy some meat and fruit", deadline: "The day after tomorrow", done: false},
-      { id: 5, title: "finall year project", description:"A game", deadline:"School year end", done: false}
+      { id: 1, title: "Dishes", description: "Empty dishwasher", deadline: "Today" , done: false, pirority:"low"},
+      { id: 2, title: "Laundry", description: "Fold clothes and put away", deadline: "Tomorrow" , done: false,pirority:"medium"},
+      { id: 3, title: "Tidy up", deadline: "Today" , done: false, pirority:"high"},
+      { id: 4, title: "Go shopping", description:"Buy some meat and fruit", deadline: "The day after tomorrow", done: false,pirority:"meduim"},
+      { id: 5, title: "finall year project", description:"A game", deadline:"School year end", done: false,pirority:"low"}
     ]
   });
   const [ formState, setFormState ] = useState({
     title: "",
     description: "",
+    pirority:"",
     deadline: ""
   });
   const doneHandler = (taskIndex) => {
@@ -41,6 +42,9 @@ function App() {
           break;
       case "description":
           form.description = event.target.value;
+          break;
+      case "pirority":
+          form.pirority = event.target.value;
           break;
       case "deadline":
           form.deadline = event.target.value;
@@ -96,6 +100,7 @@ function App() {
                 key={task.id}
                 markDone = {() => doneHandler(index)}
                 deleteTask = {() => deleteHandler(index)}
+                pirority={task.pirority}
               />
           ))}
         </Grid>

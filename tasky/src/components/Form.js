@@ -35,6 +35,20 @@ const AddTaskForm = (props) => {
       </div>
       <div>
         <TextField
+          name="pirority"
+          label="Pirority"
+          InputLabelProps={{ shrink: true }}
+          type="data"
+          onChange={(event) => props.change(event)}   
+          select='true'
+        >
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </TextField>
+      </div>
+      <div>
+        <TextField
           name="description"
           id="outlined-multiline-static"
           label="Task Details"
